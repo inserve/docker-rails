@@ -1,4 +1,5 @@
 FROM ruby:2.3-slim
+MAINTAINER patrik.svedberg@inserve.se
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
