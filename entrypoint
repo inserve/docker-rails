@@ -4,6 +4,7 @@
 # Sets up secrets.yml and starts the rails application
 set -e
 
+if [ "$RAILS_ENV" = 'production' ]; then
 
 if [ -z "$SECRET_KEY_BASE" ]; then
   echo "env SECRET_KEY_BASE variable not set"
@@ -21,4 +22,8 @@ endmsg
 
 #bundle exec rake db:migrate
 #exec bundle exec rails server Puma -b 0.0.0.0
-exec $@
+fi
+
+echo "Running custom entrypoint"
+
+exec "$@"
