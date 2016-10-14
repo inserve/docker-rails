@@ -5,6 +5,7 @@
 set -e
 
 if [ "$RAILS_ENV" = 'production' ]; then
+echo "Running Container in production mode"
 
 if [ -z "$SECRET_KEY_BASE" ]; then
   echo "env SECRET_KEY_BASE variable not set"
@@ -24,6 +25,7 @@ fi
 
 ## When running as rails
 if [ "$RAILS_ENV" = 'development' ]; then
+  echo "Running Container in developer mode"
   bundle config --delete frozen
   export BUNDLE_PATH='vendor/bundle'
   bundle config path

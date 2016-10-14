@@ -43,7 +43,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 WORKDIR /app
 
 
-ADD ./entrypoint /usr/bin/
+ADD ./entrypoint /usr/local/bin/
 
 
 
@@ -52,4 +52,4 @@ ENV RAILS_SERVE_STATIC_FILES=true
 EXPOSE 3000
 
 
-ENTRYPOINT ['/usr/bin/entrypoint']
+ENTRYPOINT ['/usr/local/bin/entrypoint']
