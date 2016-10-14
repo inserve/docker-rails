@@ -24,6 +24,14 @@ endmsg
 #exec bundle exec rails server Puma -b 0.0.0.0
 fi
 
-echo "Running custom entrypoint"
+if [ "$RAILS_ENV" = 'development' ]; then
+  bundle config --delete frozen
+  bundle config --global path vendor/bundle
+  if [ -z $! ]; then
+    echo "success"
+  else
+    echo "fail"
+  fi
+fi
 
 exec "$@"
