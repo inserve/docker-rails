@@ -18,9 +18,9 @@ RUN set -ex \
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 5.7.0
 
-RUN apt-get clean && \
-    apt-get update && \
-    apt-get install -y \
+RUN apt clean && \
+    apt update && \
+    apt install -y \
     ca-certificates \
     curl \
     wget \
@@ -38,3 +38,6 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && grep " node-v$NODE_VERSION-linux-x64.tar.xz\$" SHASUMS256.txt.asc | sha256sum -c - \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc
+
+ADD ./entrypoint /usr/bin/
+ENTRYPOINT ['/usr/bin/entrypoint']
