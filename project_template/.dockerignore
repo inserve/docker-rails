@@ -1,0 +1,7 @@
+vendor/bundle
+tmp/
+log/
+db/*.sqlite3
+spec/*
+# Ignore all dotfiles like .git/ .bundle/
+.*

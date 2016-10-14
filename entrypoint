@@ -20,10 +20,9 @@ production:
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 endmsg
 
-#bundle exec rake db:migrate
-#
 fi
 
+## When running as rails
 if [ "$RAILS_ENV" = 'development' ]; then
   bundle config --delete frozen
   export BUNDLE_PATH='vendor/bundle'
