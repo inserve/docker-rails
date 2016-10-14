@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Used in dockerfile as CMD
+# Sets up secrets.yml and starts the rails application
+set -e
+
+if [ "$RAILS_ENV" = 'production' ]; then
+
+if [ -z "$SECRET_KEY_BASE" ]; then
+  echo "env SECRET_KEY_BASE variable not set"
+  echo "Generating new random secret, current user-sessions will be lost"
+  export SECRET_KEY_BASE=$(rake secret)
+fi
+
+
+cat > ./config/secrets.yml <<'endmsg'
+# Do not keep production secrets in the repository,
+# instead read values from the environment.
+production:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+endmsg
+
+#bundle exec rake db:migrate
+#exec bundle exec rails server Puma -b 0.0.0.0
+fi
+
+echo "Running custom entrypoint"
+
+exec "$@"
