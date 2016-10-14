@@ -21,17 +21,28 @@ production:
 endmsg
 
 #bundle exec rake db:migrate
-#exec bundle exec rails server Puma -b 0.0.0.0
+#
 fi
 
 if [ "$RAILS_ENV" = 'development' ]; then
   bundle config --delete frozen
-  bundle config --global path vendor/bundle
-  if [ -z $! ]; then
-    echo "success"
-  else
-    echo "fail"
-  fi
+  export BUNDLE_PATH='vendor/bundle'
+  bundle config path
+  # Try and setup the bundle  
+  {
+    bundle
+  } || {
+    echo "Bundle failed, please fix it manually"
+  }
 fi
 
-exec "$@"
+if [ -z "$@" ]; then
+  # Automigrate to latest version.
+  if [ -z "$NOMIGRATE" ]; then
+    bundle exec rake db:migrate
+  fi
+
+  exec bundle exec rails server Puma -b 0.0.0.0
+else
+  exec "$@"
+fi
