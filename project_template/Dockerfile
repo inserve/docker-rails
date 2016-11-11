@@ -5,5 +5,5 @@ RUN bundle install --without=development,test
 
 COPY . ./
 
-RUN rm config/database.yml && \
-    DATABASE_URL=sqlite3:///tmp/dummy.sqlite3 bundle exec rake assets:precompile
+RUN (([ -f "config/database.yml" ] && rm config/database.yml) || true ) && \
+    (([ -f "Rakefile" ] && DATABASE_URL=sqlite3:///tmp/dummy.sqlite3 bundle exec rake assets:precompile) || true)
