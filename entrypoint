@@ -29,7 +29,7 @@ if [ "$RAILS_ENV" = 'development' ]; then
   bundle config --delete frozen
   export BUNDLE_PATH='vendor/bundle'
   bundle config path
-  # Try and setup the bundle  
+  # Try and setup the bundle
   {
     bundle
   } || {
