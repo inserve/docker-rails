@@ -52,4 +52,4 @@ ENV RAILS_SERVE_STATIC_FILES=true
 EXPOSE 3000
 
 
-ENTRYPOINT ['/usr/local/bin/entrypoint']
+ENTRYPOINT '/usr/local/bin/entrypoint'
