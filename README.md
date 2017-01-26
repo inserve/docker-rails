@@ -10,7 +10,7 @@ hopefully without negative impact on production containers
 Usage:
 
     # start rails as a developer.
-    docker-compose run dev
+    docker-compose up dev
 
     # drop into the project's bash where ruby is available
-    docker-compose run dev bash
+    docker-compose run --rm dev bash
