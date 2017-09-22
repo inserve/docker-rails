@@ -88,4 +88,4 @@ ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
 EXPOSE 3000
 
-ENTRYPOINT ["bash","/usr/local/bin/entrypoint"]
+ENTRYPOINT ["sh","/usr/local/bin/entrypoint"]
