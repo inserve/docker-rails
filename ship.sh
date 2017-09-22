@@ -10,7 +10,7 @@
 # and update the NAME variable.
 # Happy shipping!
 
-NAME=rails
+NAME=inserve/rails
 
 DOCKERFILE=Dockerfile
 
@@ -23,6 +23,6 @@ docker build \
   -t ${NAME}:${TAG} \
   -t ${NAME}:${BRANCHTAG} \
   -f $DOCKERFILE . && \
-docker push ${NAME}:${TAG} && \
+#docker push ${NAME}:${TAG} && \
 docker push ${NAME}:${BRANCHTAG} && \
-echo "Version: ${TAG} successfully shipped"
+echo "Version: ${BRANCHTAG} successfully shipped"
