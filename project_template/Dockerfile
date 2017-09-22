@@ -1,7 +1,7 @@
-FROM inserve/rails:4
+FROM inserve/rails:alpine
 
-# COPY ./Gemfile* ./
-# RUN bundle install --without=development,test
+COPY ./Gemfile* ./
+RUN bundle install --without=development,test
 
 COPY . ./
 

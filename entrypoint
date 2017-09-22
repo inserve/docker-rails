@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Used in dockerfile as CMD
 # Sets up secrets.yml and starts the rails application
